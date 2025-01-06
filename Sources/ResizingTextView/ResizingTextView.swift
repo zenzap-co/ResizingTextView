@@ -242,9 +242,9 @@ public extension ResizingTextView {
     }
     
     func foregroundColor(_ color: NSColor) -> Self {
-            var newSelf = self
-            newSelf.foregroundColor = color
-            return newSelf
+        var newSelf = self
+        newSelf.foregroundColor = color
+        return newSelf
     }
     
     func placeholderColor(_ color: NSColor) -> Self {

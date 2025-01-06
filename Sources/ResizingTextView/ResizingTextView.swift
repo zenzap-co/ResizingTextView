@@ -14,7 +14,7 @@ import SwiftUI
     var font: UXFont = .preferredFont(forTextStyle: .body)
     var canHaveNewLineCharacters: Bool
     var foregroundColor: UXColor = defaultLabelColor
-    var placeholderColor: UXColor = .secondaryLabel
+    var placeholderColor: UXColor = defaultPlaceholderColor
     var hasGreedyWidth: Bool
 #if os(macOS)
     var focusesNextKeyViewByTabKey: Bool = true
@@ -46,6 +46,17 @@ import SwiftUI
 #elseif os(iOS)
     public static var defaultLabelColor: UIColor {
         UIColor.label
+    }
+#endif
+    
+#if os(macOS)
+    public static var defaultPlaceholderColor: NSColor {
+        NSColor.secondaryLabelColor
+    }
+
+#elseif os(iOS)
+    public static var defaultPlaceholderColor: UIColor {
+        UIColor.secondaryLabel
     }
 #endif
 
@@ -231,12 +242,12 @@ public extension ResizingTextView {
     }
     
     func foregroundColor(_ color: NSColor) -> Self {
-        var newSelf = self
-        newSelf.foregroundColor = color
-        return newSelf
+            var newSelf = self
+            newSelf.foregroundColor = color
+            return newSelf
     }
     
-    func placeholderColor(_ color: UIColor) -> Self {
+    func placeholderColor(_ color: NSColor) -> Self {
         var newSelf = self
         newSelf.placeholderColor = color
         return newSelf
